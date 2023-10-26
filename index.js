@@ -47,7 +47,7 @@ app.post('/sendEmail', (req, res) => {
 
   const mailOptions = {
     from: 'ugurbukcuoglu@gmail.com',
-    to: 'ugurbukcuoglu@gmail.com',
+    to: 'ugurbukcuoglu@gmail.com;aydangokceercan@gmail.com',
     subject: 'New lead from APP PILLOW',
     text: `FirstName ${firstName} \nLastName: ${lastName},\nService: ${message}\n CompanyName: ${companyName}`,
   };
