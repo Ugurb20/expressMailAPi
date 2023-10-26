@@ -10,18 +10,21 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
-// Middleware to allow traffic only from a specific IP address and domain name
-app.use((req, res, next) => {
-  const allowedIP = '176.33.67.140';
-  const allowedDomain = 'apppillow.com';
+const apiKey = process.env.API_KEY;
 
-  const origin = req.get('Origin');
-  if (!(req.ip == allowedIP || (origin && origin.includes(allowedDomain)))) {
-    return res.status(403).send(`Origin: ${origin}\n Ip${req.ip}`);
+// Middleware to check the API key
+const apiKeyMiddleware = (req, res, next) => {
+  const providedApiKey = req.header('x-api-key');
+
+  if (providedApiKey !== apiKey) {
+    return res.status(401).json({ message: 'Unauthorized' });
   }
 
   next();
-});
+};
+
+// Apply the API key middleware to your serverless function
+app.use(apiKeyMiddleware);
 
 app.get('/hello', (req, res) => {
   res.send('Hello, World!');
