@@ -48,8 +48,8 @@ app.post('/sendEmail', (req, res) => {
   const mailOptions = {
     from: 'ugurbukcuoglu@gmail.com',
     to: 'ugurbukcuoglu@gmail.com',
-    subject: subject || 'Message from Express Server',
-    text: `Hello ${firstName} ${lastName},\n\n${message}\n${companyName}`,
+    subject: 'New lead from APP PILLOW',
+    text: `FirstName ${firstName} \nLastName: ${lastName},\nService: ${message}\n CompanyName: ${companyName}`,
   };
 
   // Send the email
