@@ -4,12 +4,12 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-app.use(cors());
-
 dotenv.config();
 
 const app = express();
 const port = 3000;
+
+app.use(cors());
 
 app.use(bodyParser.json());
 
