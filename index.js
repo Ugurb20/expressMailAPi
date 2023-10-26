@@ -16,8 +16,8 @@ app.use((req, res, next) => {
   const allowedDomain = 'apppillow.com';
 
   const origin = req.get('Origin');
-  if (!(req.ip == allowedIP || origin.includes(allowedDomain))) {
-    return res.status(403).send(`${(origin, req.ip)}`);
+  if (!(req.ip == allowedIP || (origin && origin.includes(allowedDomain)))) {
+    return res.status(403).send(`Origin: ${origin}\n Ip${req.ip}`);
   }
 
   next();
