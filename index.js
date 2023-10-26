@@ -15,18 +15,12 @@ app.use((req, res, next) => {
   const allowedIP = '176.33.67.140';
   const allowedDomain = 'apppillow.com';
 
-  // Check the IP address
-  if (req.ip !== allowedIP) {
-    return res.status(403).send('Access denied');
-  }
-
-  // Check the domain name in the request's 'Origin' header
   const origin = req.get('Origin');
-  if (origin && !origin.includes(allowedDomain)) {
-    return res.status(403).send('Access denied');
+  if (!(req.ip == allowedIP || origin.includes(allowedDomain))) {
+    return res.status(403).send(`${(origin, req.ip)}`);
   }
 
-  next(); // If IP and domain checks pass, continue to the next middleware
+  next();
 });
 
 app.get('/hello', (req, res) => {
