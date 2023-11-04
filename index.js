@@ -49,7 +49,7 @@ app.post('/sendEmail', (req, res) => {
     from: 'ugurbukcuoglu@gmail.com',
     to: 'ugurbukcuoglu@gmail.com;aydangokceercan@gmail.com',
     subject: 'New lead from APP PILLOW',
-    text: `FirstName ${firstName} \nLastName: ${lastName},\nService: ${message}\n CompanyName: ${companyName}`,
+    text: `FirstName ${firstName} \nLastName: ${lastName},\nService: ${message}\n CompanyName: ${companyName} Email: ${email}`,
   };
 
   // Send the email
